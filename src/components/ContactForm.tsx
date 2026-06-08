@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { Send, CheckCircle, MessageSquare, Mail, Phone, MapPin, Trash2, ShieldAlert } from "lucide-react";
+import { Send, CheckCircle, MessageSquare, Mail, Phone, MapPin, ShieldAlert } from "lucide-react";
 import { personalInfo } from "../data/portfolioData";
-import { ContactMessage } from "../types";
 
 export default function ContactForm() {
   const [name, setName] = useState("");
@@ -14,20 +13,6 @@ export default function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState("");
-  const [messagesList, setMessagesList] = useState<ContactMessage[]>([]);
-  const [showAdminPanel, setShowAdminPanel] = useState(false);
-
-  // Load any previously saved messages from localStorage for simulation
-  useEffect(() => {
-    try {
-      const stored = localStorage.getItem("munna_portfolio_messages");
-      if (stored) {
-        setMessagesList(JSON.parse(stored));
-      }
-    } catch (e) {
-      console.error("Local storage access failed: ", e);
-    }
-  }, []);
 
   const handleValidation = () => {
     const tempErrors: Record<string, string> = {};
@@ -71,24 +56,6 @@ export default function ContactForm() {
       });
 
       if (response.ok) {
-        // Build the message object for local history cache as well
-        const newMsg: ContactMessage = {
-          id: "msg-" + Date.now(),
-          name: name.trim(),
-          email: email.trim(),
-          subject: subject.trim(),
-          message: message.trim(),
-          timestamp: new Date().toLocaleString()
-        };
-
-        const updated = [newMsg, ...messagesList];
-        setMessagesList(updated);
-        try {
-          localStorage.setItem("munna_portfolio_messages", JSON.stringify(updated));
-        } catch (err) {
-          console.error(err);
-        }
-
         setSubmitted(true);
         // Reset form inputs
         setName("");
@@ -115,16 +82,6 @@ export default function ContactForm() {
       setSubmitError("Network connectivity issue. Please check your internet link and try again.");
     } finally {
       setIsSubmitting(false);
-    }
-  };
-
-  const clearMessage = (id: string) => {
-    const filtered = messagesList.filter(m => m.id !== id);
-    setMessagesList(filtered);
-    try {
-      localStorage.setItem("munna_portfolio_messages", JSON.stringify(filtered));
-    } catch (err) {
-      console.error(err);
     }
   };
 
@@ -183,23 +140,6 @@ export default function ContactForm() {
                   </div>
                 </div>
               </div>
-            </div>
-
-            {/* Quick warning details about local simulation messages */}
-            <div className="p-5 border border-brand-500/20 bg-brand-500/5 rounded-sm">
-              <h4 className="flex items-center gap-1.5 font-display font-semibold text-brand-500 text-xs font-mono uppercase tracking-wider">
-                <ShieldAlert className="w-4 h-4 text-brand-500" />
-                <span>Simulation Demonstration</span>
-              </h4>
-              <p className="text-[11px] font-sans text-white/50 leading-relaxed mt-1.5">
-                Because this portfolio operates statically inside your browser sandbox, messages are saved securely to your browser's persistent key-value <strong>localStorage</strong>.
-              </p>
-              <button
-                onClick={() => setShowAdminPanel(!showAdminPanel)}
-                className="mt-3 inline-flex items-center gap-1 text-[11px] font-mono text-brand-500 hover:underline cursor-pointer"
-              >
-                <span>{showAdminPanel ? "Hide" : "Toggle"} Client message Inbox ({messagesList.length})</span>
-              </button>
             </div>
           </div>
 
@@ -316,77 +256,6 @@ export default function ContactForm() {
           </div>
 
         </div>
-
-        {/* Administration Inbox Demonstration Pane */}
-        <AnimatePresence>
-          {showAdminPanel && (
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 20 }}
-              className="mt-16 border border-white/10 bg-[#121212] rounded-sm p-6"
-            >
-              <div className="flex justify-between items-center border-b border-white/10 pb-3 mb-6">
-                <div>
-                  <h3 className="font-display font-bold text-white text-sm tracking-wide">
-                    Administrative Inbox Demo Pane
-                  </h3>
-                  <p className="text-xs text-white/45 font-sans mt-0.5">
-                    View list of client submissions logged in browser state
-                  </p>
-                </div>
-                <button
-                  onClick={() => {
-                    localStorage.removeItem("munna_portfolio_messages");
-                    setMessagesList([]);
-                  }}
-                  className="px-3 py-1 text-[11px] font-mono hover:bg-white/10 border border-white/10 rounded-sm text-white/80 flex items-center gap-1.5 cursor-pointer"
-                >
-                  <Trash2 className="w-3.5 h-3.5" />
-                  <span>Clear Local Inbox</span>
-                </button>
-              </div>
-
-              {messagesList.length === 0 ? (
-                <div className="text-center py-10">
-                  <p className="text-xs font-mono text-white/40">INBOX EMPTY. Drop a message above to see it populate here instantly.</p>
-                </div>
-              ) : (
-                <div className="space-y-4">
-                  {messagesList.map((msg) => (
-                    <div key={msg.id} className="bg-[#151515] border border-white/10 rounded-sm p-4 relative">
-                      <button 
-                        onClick={() => clearMessage(msg.id)}
-                        className="absolute right-3 top-3 p-1 text-white/40 hover:text-white rounded cursor-pointer"
-                        title="Delete message from browser"
-                      >
-                        <Trash2 className="w-3.5 h-3.5" />
-                      </button>
-                      
-                      <div className="flex flex-wrap gap-2 items-center text-[10px] font-mono text-white/40 mb-1">
-                        <span className="bg-white/5 text-brand-500 px-2 py-0.5 rounded-sm font-bold">
-                          {msg.timestamp}
-                        </span>
-                        <span>FROM: {msg.email}</span>
-                      </div>
-
-                      <h4 className="font-sans font-bold text-white text-sm">
-                        {msg.subject}
-                      </h4>
-                      <p className="text-xs text-white/50 font-mono mt-0.5">
-                        Inquirer: {msg.name}
-                      </p>
-                      
-                      <p className="text-xs text-white/80 font-sans bg-white/5 border border-white/5 rounded-sm p-3 mt-3 leading-relaxed">
-                        {msg.message}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              )}
-            </motion.div>
-          )}
-        </AnimatePresence>
 
       </div>
     </section>
