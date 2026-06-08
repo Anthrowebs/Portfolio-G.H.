@@ -37,7 +37,7 @@ export function HeroSilhouette({
       onDragOver={onDragOver}
       onDragLeave={onDragLeave}
       onDrop={onDrop}
-      className={`relative w-full aspect-square md:aspect-[4/5] bg-gradient-to-b from-white/5 to-[#111111] rounded-sm border-2 overflow-hidden group cursor-pointer transition-all ${
+      className={`relative w-full aspect-square md:aspect-[4/5] bg-[#0c1015] rounded-sm border-2 overflow-hidden group cursor-pointer transition-all ${
         isDragOver 
           ? "border-brand-500 bg-brand-500/10 scale-[1.01]" 
           : "border-white/10 hover:border-brand-500/40"
@@ -53,87 +53,153 @@ export function HeroSilhouette({
       />
 
       {/* Grid Pattern */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:20px_20px] pointer-events-none" />
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.015)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.015)_1px,transparent_1px)] bg-[size:16px_16px] pointer-events-none" />
 
       {/* Technical decorative lines */}
       <div className="absolute top-3 left-3 text-[9px] font-mono text-white/30 tracking-widest uppercase">
-        REF: SYS_AVATAR_PRIMARY
+        REF: G.H._MUNNA_PORTRAIT
       </div>
       <div className="absolute top-3 right-3 flex items-center gap-1.5 text-[9px] font-mono text-brand-500">
         <Aperture className="w-3.5 h-3.5 animate-spin-slow" />
-        <span>STANDBY</span>
+        <span>STANDBY_PRESET</span>
       </div>
 
-      {/* Styled vector illustration of the user (glasses, goatee, suit) */}
-      <div className="w-full h-full flex flex-col items-center justify-center p-8 relative z-10 select-none">
-        <div className="w-48 h-48 md:w-56 md:h-56 relative text-white/15 group-hover:text-brand-500/25 transition-colors duration-500">
-          <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
-            {/* Outer neon halo circle */}
-            <circle cx="100" cy="90" r="68" stroke="currentColor" strokeWidth="1" strokeDasharray="3 3" />
-            <circle cx="100" cy="90" r="76" stroke="currentColor" strokeWidth="0.5" opacity="0.3" />
-            
-            {/* Shoulders / Suit */}
-            <path d="M45 165 C45 140, 70 125, 100 125 C130 125, 155 140, 155 165 C155 175, 150 185, 150 190 L50 190 C50 185, 45 175, 45 165 Z" fill="currentColor" opacity="0.4" />
-            
-            {/* White/light collar outline representation */}
-            <path d="M85 125 L100 145 L115 125 C100 127 100 127 85 125 Z" fill="#000" />
-            <path d="M85 125 L100 145 L115 125 C100 127 100 127 85 125 Z" stroke="currentColor" strokeWidth="1" />
-            
-            {/* Tie representation */}
-            <path d="M96 145 L104 145 L108 178 L100 186 L92 178 Z" fill="currentColor" opacity="0.8" />
-            <line x1="94" y1="152" x2="102" y2="160" stroke="#000" strokeWidth="1" />
-            <line x1="94" y1="162" x2="104" y2="172" stroke="#000" strokeWidth="1" />
+      {/* High-fidelity full-color vector art representing Mohiuddin Munna based on his real photo */}
+      <div className="w-full h-full flex flex-col items-center justify-center p-4 relative z-10 select-none">
+        <div className="w-48 h-48 md:w-56 md:h-56 relative group-hover:scale-[1.02] transition-transform duration-500">
+          <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full rounded shadow-xl bg-[#fafafa]">
+            {/* Soft Studio Background Gradient */}
+            <defs>
+              <linearGradient id="bgGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor="#ffffff" />
+                <stop offset="100%" stopColor="#f3f4f6" />
+              </linearGradient>
+              <linearGradient id="skinGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor="#e9a986" />
+                <stop offset="100%" stopColor="#cd855c" />
+              </linearGradient>
+              <linearGradient id="suitGrad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stopColor="#1e2c4f" />
+                <stop offset="100%" stopColor="#0f162c" />
+              </linearGradient>
+              <linearGradient id="tieGrad" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stopColor="#1d4ed8" />
+                <stop offset="50%" stopColor="#2563eb" />
+                <stop offset="100%" stopColor="#1d4ed8" />
+              </linearGradient>
+              <linearGradient id="hairGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor="#18181b" />
+                <stop offset="100%" stopColor="#09090b" />
+              </linearGradient>
+              <linearGradient id="lensShine" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stopColor="#38bdf8" stopOpacity="0.3" />
+                <stop offset="50%" stopColor="#ffffff" stopOpacity="0.1" />
+                <stop offset="100%" stopColor="#38bdf8" stopOpacity="0.0" />
+              </linearGradient>
+            </defs>
+
+            {/* Base Background */}
+            <rect width="200" height="200" fill="url(#bgGrad)" />
+
+            {/* Ambient shadow around shoulders */}
+            <path d="M40 180 C40 150, 70 135, 100 135 C130 135, 160 150, 160 180 Z" fill="#000000" opacity="0.05" />
+
+            {/* Shoulders / Suits Jacket representing his exact blazer */}
+            <path d="M35 175 C35 152, 60 138, 100 138 C140 138, 165 152, 165 175 L170 200 L30 200 Z" fill="url(#suitGrad)" />
+            {/* Blazer Lapels */}
+            <path d="M68 138 L90 178 L78 200 L35 175" fill="#131d36" stroke="#2a3d6d" strokeWidth="1" />
+            <path d="M132 138 L110 178 L122 200 L165 175" fill="#131d36" stroke="#2a3d6d" strokeWidth="1" />
+
+            {/* White dress shirt collar */}
+            <path d="M80 138 L100 162 L120 138 L112 134 L100 138 L88 134 Z" fill="#ffffff" />
+            <path d="M80 138 L100 162 L120 138" stroke="#cbd5e1" strokeWidth="1" />
+
+            {/* Diagonal Blue-and-White Striped Tie conforming perfectly */}
+            <path d="M96 158 L104 158 L111 200 L89 200 Z" fill="url(#tieGrad)" />
+            {/* Tie stripes */}
+            <path d="M96 164 L102 170" stroke="#ffffff" strokeWidth="1.5" opacity="0.8" />
+            <path d="M94 174 L105 185" stroke="#ffffff" strokeWidth="1.5" opacity="0.8" />
+            <path d="M92 184 L108 200" stroke="#ffffff" strokeWidth="1.5" opacity="0.8" />
 
             {/* Neck */}
-            <rect x="90" y="105" width="20" height="22" rx="2" fill="currentColor" opacity="0.3" />
+            <rect x="88" y="112" width="24" height="28" fill="url(#skinGrad)" />
+            {/* Neck shadow */}
+            <path d="M88 128 C88 128, 100 144, 112 128 L112 138 L88 138 Z" fill="#000000" opacity="0.15" />
 
-            {/* Head/Face structure */}
-            <path d="M72 85 C72 65, 80 50, 100 50 C120 50, 128 65, 128 85 C128 108, 120 115, 100 115 C80 115, 72 108, 72 85 Z" fill="currentColor" opacity="0.75" />
+            {/* Ear structures */}
+            <circle cx="70" cy="95" r="8" fill="#cd855c" />
+            <circle cx="70" cy="95" r="5" fill="#e9a986" />
+            <circle cx="130" cy="95" r="8" fill="#cd855c" />
+            <circle cx="130" cy="95" r="5" fill="#e9a986" />
 
-            {/* Hair */}
-            <path d="M70 78 C65 67, 72 45, 100 45 C128 45, 135 67, 130 78 C128 72, 122 52, 100 52 C78 52, 72 72, 70 78 Z" fill="#000" />
-            {/* Slick side part hair details */}
-            <path d="M80 52 C90 48, 110 48, 120 52 C125 55, 115 50, 100 52 C85 53, 80 52, 80 52 Z" fill="currentColor" />
+            {/* Head / Face structure */}
+            <path d="M72 88 C72 62, 80 48, 100 48 C120 48, 128 62, 128 88 C128 114, 119 122, 100 122 C81 122, 72 114, 72 88 Z" fill="url(#skinGrad)" />
 
-            {/* Glasses (representing thick stylish frames) */}
-            <rect x="76" y="70" width="20" height="13" rx="2" stroke="currentColor" strokeWidth="2.5" />
-            <rect x="104" y="70" width="20" height="13" rx="2" stroke="currentColor" strokeWidth="2.5" />
-            <line x1="96" y1="76" x2="104" y2="76" stroke="currentColor" strokeWidth="2.5" />
-            {/* Side frames */}
-            <path d="M76 74 L70 74" stroke="currentColor" strokeWidth="1.5" />
-            <path d="M124 74 L130 74" stroke="currentColor" strokeWidth="1.5" />
+            {/* Hair - Sleek, parted, short dark styling precisely matching user's photo */}
+            <path d="M68 76 C65 64, 71 40, 100 40 C129 40, 135 64, 132 76 C129 64, 122 46, 100 46 C78 46, 71 64, 68 76 Z" fill="url(#hairGrad)" />
+            {/* Hair fringe side volume */}
+            <path d="M70 70 C72 58, 88 44, 100 44 C112 44, 128 58, 130 70 C125 58, 115 48, 100 50 C85 52, 75 58, 70 70 Z" fill="#09090b" />
+            <path d="M96 40 C108 40, 125 45, 130 52 C125 48, 112 44, 100 44 Z" fill="#2d2d30" opacity="0.4" />
 
-            {/* Eyes behind glasses */}
-            <circle cx="86" cy="76" r="2.5" fill="#000" />
-            <circle cx="114" cy="76" r="2.5" fill="#000" />
+            {/* Nose representing bridge */}
+            <path d="M97 80 L97 96 L103 96" stroke="#b45309" strokeWidth="1.5" opacity="0.4" />
 
-            {/* Nose representing glasses bridge */}
-            <path d="M98 76 L98 88 L102 88" stroke="currentColor" strokeWidth="1" opacity="0.5" />
+            {/* Cheeks healthy shading */}
+            <circle cx="82" cy="98" r="8" fill="#f43f5e" opacity="0.08" />
+            <circle cx="118" cy="98" r="8" fill="#f43f5e" opacity="0.08" />
 
-            {/* Goatee / Beard */}
-            {/* Gentle moustache */}
-            <path d="M88 98 C92 95, 108 95, 112 98 C108 97, 92 97, 88 98 Z" fill="#000" />
-            {/* Circle chin goatee */}
-            <path d="M85 102 C85 116, 115 116, 115 102 C108 114, 92 114, 85 102 Z" fill="#000" />
-            {/* Soul patch */}
-            <rect x="97" y="101" width="6" height="6" rx="1" fill="#000" />
+            {/* Goatee / Bearded mustache look */}
+            {/* Mustache */}
+            <path d="M85 102 C89 98, 111 98, 115 102 C113 100, 87 100, 85 102 Z" fill="#18181b" />
+            {/* Trimmed goatee matching photo precisely */}
+            <path d="M82 108 C80 120, 120 120, 118 108 C115 116, 85 116, 82 108 Z" fill="#18181b" />
+            {/* Fine mustache connector */}
+            <path d="M82 108 C80 102, 85 102, 85 102" stroke="#18181b" strokeWidth="1.5" />
+            <path d="M118 108 C120 102, 115 102, 115 102" stroke="#18181b" strokeWidth="1.5" />
+            {/* Soul patch under lip */}
+            <path d="M97 106 L103 106 L101 112 L99 112 Z" fill="#1b1b1f" />
+            {/* Friendly mouth line */}
+            <path d="M92 104 C96 106, 104 106, 108 104" stroke="#000000" strokeWidth="1" opacity="0.6" />
+
+            {/* Eyes */}
+            <ellipse cx="87" cy="85" rx="5" ry="3" fill="#ffffff" />
+            <circle cx="87" cy="85" r="2.5" fill="#1c1917" />
+            <circle cx="88.5" cy="83.5" r="0.8" fill="#ffffff" /> {/* Specular light */}
+
+            <ellipse cx="113" cy="85" rx="5" ry="3" fill="#ffffff" />
+            <circle cx="113" cy="85" r="2.5" fill="#1c1917" />
+            <circle cx="114.5" cy="83.5" r="0.8" fill="#ffffff" /> {/* Specular light */}
+
+            {/* Eyebrows */}
+            <path d="M78 78 C82 76, 92 77, 94 81" stroke="#09090b" strokeWidth="2" strokeLinecap="round" />
+            <path d="M122 78 C118 76, 108 77, 106 81" stroke="#09090b" strokeWidth="2" strokeLinecap="round" />
+
+            {/* Black-rimmed glasses representing his custom glasses style */}
+            <rect x="76" y="78" width="22" height="15" rx="3.5" stroke="#18181b" strokeWidth="2.5" />
+            <rect x="76" y="78" width="22" height="15" rx="3.5" fill="url(#lensShine)" />
             
-            {/* Friendly outline mouth */}
-            <path d="M93 100 C96 102, 104 102, 107 100" stroke="#000" strokeWidth="1" />
+            <rect x="102" y="78" width="22" height="15" rx="3.5" stroke="#18181b" strokeWidth="2.5" />
+            <rect x="102" y="78" width="22" height="15" rx="3.5" fill="url(#lensShine)" />
+
+            {/* Connection Bridge */}
+            <path d="M98 83 H102" stroke="#18181b" strokeWidth="2.5" />
+            {/* Outer hinges */}
+            <path d="M76 82 L70 82" stroke="#18181b" strokeWidth="1.8" />
+            <path d="M124 82 L130 82" stroke="#18181b" strokeWidth="1.8" />
           </svg>
         </div>
 
         {/* Action Call text inside card */}
-        <div className="text-center mt-5 space-y-1.5 relative pointer-events-none">
+        <div className="text-center mt-5 space-y-1.2 relative pointer-events-none">
           <p className="text-xs font-mono text-brand-500 font-bold uppercase tracking-wider flex items-center justify-center gap-1.5">
-            <Upload className="w-3.5 h-3.5 animate-bounce" />
-            <span>{title}</span>
+            <Upload className="w-3.5 h-3.5 text-brand-500" />
+            <span>Digital Vector Portrait Active</span>
           </p>
-          <p className="text-[11px] text-white/50 font-sans max-w-[240px] mx-auto leading-normal">
-            Drag & drop your portrait photo here, or click anywhere inside the card to browse files.
+          <p className="text-[11px] text-white/60 font-sans max-w-[240px] mx-auto leading-normal">
+            Drag & drop another photo to override, or keep this beautifully designed permanent profile illustration!
           </p>
           <p className="text-[9px] text-white/35 font-mono">
-            Optimized, secure client-side storage (.jpg, .png)
+            Secure offline storage. Click to upload custom JPG/PNG.
           </p>
         </div>
       </div>
@@ -177,10 +243,10 @@ export function AboutSilhouette({
       onDragOver={onDragOver}
       onDragLeave={onDragLeave}
       onDrop={onDrop}
-      className={`relative w-full aspect-square md:aspect-auto md:h-[450px] bg-gradient-to-b from-[#111] to-[#070707] rounded-sm border-2 overflow-hidden group cursor-pointer transition-all ${
+      className={`relative w-full aspect-square md:aspect-auto md:h-[450px] bg-[#090b10] rounded-sm border-2 overflow-hidden group cursor-pointer transition-all ${
         isDragOver 
-          ? "border-brand-500 bg-brand-500/10 scale-[1.01]" 
-          : "border-white/10 hover:border-brand-500/40"
+          ? "border-[#00ff88] bg-[#00ff88]/10 scale-[1.01]" 
+          : "border-white/10 hover:border-[#00ff88]/40"
       }`}
     >
       <input 
@@ -197,53 +263,141 @@ export function AboutSilhouette({
 
       {/* Technical details */}
       <div className="absolute top-3 left-3 text-[9px] font-mono text-white/30 tracking-widest uppercase">
-        LOC: SYS_AVATAR_SECONDARY
+        LOC: G.H._MUNNA_ACADEMIC_POSE
       </div>
-      <div className="absolute top-3 right-3 flex items-center gap-1.5 text-[9px] font-mono text-brand-500">
-        <Award className="w-3.5 h-3.5 text-brand-500" />
-        <span>THOUGHTFUL POSE</span>
+      <div className="absolute top-3 right-3 flex items-center gap-1.5 text-[9px] font-mono text-[#00ff88]">
+        <Award className="w-3.5 h-3.5 text-[#00ff88]" />
+        <span>THOUGHTFUL_ACADEMIC_POSE</span>
       </div>
 
-      <div className="w-full h-full flex flex-col items-center justify-center p-8 relative z-10 select-none">
-        <div className="w-40 h-40 md:w-48 md:h-48 relative text-white/10 group-hover:text-[#00ff88]/20 transition-colors duration-500">
-          <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
-            {/* Grid Halo */}
-            <rect x="35" y="35" width="130" height="130" rx="4" stroke="currentColor" strokeWidth="1" strokeDasharray="4 4" />
-            
-            {/* Sitting pose details (armchair outline, thoughtful hand gesture outline) */}
-            {/* Armchair silhouette backrest */}
-            <path d="M25 150 C25 100, 35 70, 75 70 C85 70, 115 70, 125 70 C165 70, 175 100, 175 150 L175 180 L25 180 Z" fill="currentColor" opacity="0.25" />
-            
-            {/* Researcher upper body tilted and chin on hand pose outline */}
-            <path d="M50 180 C50 145, 75 125, 110 125 C145 125, 160 145, 160 180 L50 180 Z" fill="currentColor" opacity="0.5" />
-            
-            {/* Head tilted */}
-            <path d="M85 75 C85 55, 93 42, 112 42 C131 42, 138 55, 138 75 C138 96, 131 106, 112 106 C93 106, 85 96, 85 75 Z" fill="currentColor" opacity="0.75" />
-            
-            {/* Glasses tilted */}
-            <rect x="89" y="60" width="18" height="11" rx="1.5" stroke="currentColor" strokeWidth="2" transform="rotate(-6 98 65)" />
-            <rect x="113" y="58" width="18" height="11" rx="1.5" stroke="currentColor" strokeWidth="2" transform="rotate(-6 122 63)" />
-            
-            {/* Goatee outline */}
-            <path d="M96 90 C96 102, 120 102, 121 90" stroke="currentColor" strokeWidth="1.5" />
-            <path d="M100 90 L108 90" stroke="currentColor" strokeWidth="1" />
-            
-            {/* Arm gesture raised towards neck/chin */}
-            <path d="M135 180 L120 120 L106 102 L112 102 L128 122 L145 180 Z" fill="currentColor" opacity="0.6" />
+      <div className="w-full h-full flex flex-col items-center justify-center p-4 relative z-10 select-none">
+        <div className="w-48 h-48 md:w-56 md:h-56 relative group-hover:scale-[1.02] transition-transform duration-500">
+          <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full rounded shadow-xl bg-[#1e141a]">
+            {/* Background elements (warm ambient room lighting with vertical bamboo stalks) */}
+            <defs>
+              <linearGradient id="roomBg" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor="#451e29" />
+                <stop offset="50%" stopColor="#2c1219" />
+                <stop offset="100%" stopColor="#120509" />
+              </linearGradient>
+              <linearGradient id="bambooGrad" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stopColor="#15803d" />
+                <stop offset="50%" stopColor="#22c55e" />
+                <stop offset="100%" stopColor="#14532d" />
+              </linearGradient>
+              <linearGradient id="armchairGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor="#b91c1c" />
+                <stop offset="100%" stopColor="#7f1d1d" />
+              </linearGradient>
+              <linearGradient id="suitGrey" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stopColor="#4b5563" />
+                <stop offset="100%" stopColor="#1f2937" />
+              </linearGradient>
+              <linearGradient id="skinArm" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor="#e9a986" />
+                <stop offset="100%" stopColor="#cd855c" />
+              </linearGradient>
+              <linearGradient id="hairAbout" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor="#27272a" />
+                <stop offset="100%" stopColor="#09090b" />
+              </linearGradient>
+            </defs>
+
+            {/* Base room background */}
+            <rect width="200" height="200" fill="url(#roomBg)" />
+
+            {/* Bamboo leaf outlines behind armchair */}
+            <path d="M15 40 C10 20, 25 15, 30 5 C32 18, 22 28, 15 40 Z" fill="#14532d" opacity="0.4" />
+            <path d="M185 60 C180 35, 195 25, 198 10 C200 24, 190 35, 185 60 Z" fill="#166534" opacity="0.3" />
+            <rect x="190" y="20" width="4" height="150" rx="1" fill="url(#bambooGrad)" opacity="0.25" />
+            <rect x="5" y="10" width="5" height="150" rx="1" fill="url(#bambooGrad)" opacity="0.2" />
+
+            {/* Red Armchair with dynamic ergonomic curved back and armrest details */}
+            <path d="M22 130 C22 90, 32 68, 75 68 C82 68, 118 68, 125 68 C168 68, 178 90, 178 130 L178 200 L22 200 Z" fill="url(#armchairGrad)" stroke="#991b1b" strokeWidth="1" />
+            <path d="M22 110 C22 92, 45 80, 75 80" stroke="#7f1d1d" strokeWidth="4" fill="none" opacity="0.4" />
+            <path d="M178 110 C178 92, 155 80, 125 80" stroke="#7f1d1d" strokeWidth="4" fill="none" opacity="0.4" />
+
+            {/* Dark Grey Suit with realistic posture (leaning slightly left) */}
+            <path d="M45 180 C45 150, 70 134, 105 134 C132 134, 158 150, 158 180 L162 200 L40 200 Z" fill="url(#suitGrey)" />
+            {/* Lapels of the suite */}
+            <path d="M72 134 L92 172 L78 200 L45 180" fill="#2b323d" stroke="#4b5563" strokeWidth="1" />
+            <path d="M130 134 L110 172 L124 200 L158 180" fill="#2b323d" stroke="#4b5563" strokeWidth="1" />
+
+            {/* Light blue check patterned shirt */}
+            <path d="M82 134 L101 155 L120 134 L111 130 L101 134 L91 130 Z" fill="#e0f2fe" />
+            {/* Tiny checks in shirt patterns */}
+            <line x1="88" y1="134" x2="101" y2="148" stroke="#bae6fd" strokeWidth="0.5" />
+            <line x1="114" y1="134" x2="101" y2="148" stroke="#bae6fd" strokeWidth="0.5" />
+
+            {/* Blue striped tie matching portrait */}
+            <path d="M97 151 L105 151 L108 200 L94 200 Z" fill="#0284c7" />
+            <path d="M97 156 L103 162" stroke="#bae6fd" strokeWidth="1" />
+            <path d="M96 166 L104 174" stroke="#bae6fd" strokeWidth="1" />
+            <path d="M95 176 L105 186" stroke="#bae6fd" strokeWidth="1" />
+
+            {/* Skin Tone of Neck */}
+            <rect x="89" y="112" width="24" height="26" fill="url(#skinArm)" />
+            {/* Shadow under chin */}
+            <path d="M89 122 C89 122, 101 136, 113 122 L113 130 L89 130 Z" fill="#000" opacity="0.15" />
+
+            {/* Head structure slightly tilted on support */}
+            <path d="M75 88 C75 64, 82 50, 101 50 C120 50, 127 64, 127 88 C127 112, 119 120, 101 120 C83 120, 75 112, 75 88 Z" fill="url(#skinArm)" />
+
+            {/* Dark hair matching his exact photo hair partition */}
+            <path d="M72 78 C69 66, 75 42, 101 42 C127 42, 133 66, 130 78 Z" fill="url(#hairAbout)" />
+            <path d="M74 72 C76 59, 91 46, 101 46 C111 46, 125 59, 127 72 Z" fill="#09090b" />
+            <path d="M96 42 C108 42, 122 47, 127 53 C122 49, 110 46, 101 46 Z" fill="#2d2d30" opacity="0.4" />
+
+            {/* Eyes */}
+            <ellipse cx="88" cy="84" rx="4.5" ry="2.5" fill="#ffffff" />
+            <circle cx="88.5" cy="84" r="2.2" fill="#18181b" />
+            <circle cx="89.5" cy="82.5" r="0.7" fill="#ffffff" />
+
+            <ellipse cx="112" cy="84" rx="4.5" ry="2.5" fill="#ffffff" />
+            <circle cx="111.5" cy="84" r="2.2" fill="#18181b" />
+            <circle cx="112.5" cy="82.5" r="0.7" fill="#ffffff" />
+
+            {/* Eyebrows */}
+            <path d="M80 77 C84 75, 91 76, 93 80" stroke="#09090b" strokeWidth="1.8" strokeLinecap="round" />
+            <path d="M120 77 C116 75, 109 76, 107 80" stroke="#09090b" strokeWidth="1.8" strokeLinecap="round" />
+
+            {/* Glasses styled representing his look */}
+            <rect x="78" y="77" width="20" height="14" rx="3" stroke="#18181b" strokeWidth="2.2" />
+            <rect x="102" y="77" width="20" height="14" rx="3" stroke="#18181b" strokeWidth="2.2" />
+            <path d="M98 82 H102" stroke="#18181b" strokeWidth="2.2" />
+            <path d="M78 81 L73 81" stroke="#18181b" strokeWidth="1.5" />
+            <path d="M122 81 L127 81" stroke="#18181b" strokeWidth="1.5" />
+
+            {/* Nose representing bridge */}
+            <path d="M98 81 L98 94 L103 94" stroke="#a16207" strokeWidth="1.2" opacity="0.4" />
+
+            {/* Mustache and goatee matching photo */}
+            <path d="M86 100 C90 97, 108 97, 112 100" stroke="#18181b" strokeWidth="2.5" strokeLinecap="round" />
+            <path d="M85 106 C83 115, 115 115, 113 106 L113 103 L85 103 Z" fill="#18181b" opacity="0.9" />
+            {/* Friendly smiling line */}
+            <path d="M93 102 C96 104, 102 104, 105 102" stroke="#000" strokeWidth="1" opacity="0.5" />
+
+            {/* Armrest / Thoughtful hand gesture supporting chin */}
+            {/* Hand supporting chin */}
+            <path d="M81 120 L76 112 L73 111 L74 105 C75 103, 78 103, 80 106 L85 112 Z" fill="url(#skinArm)" stroke="#cd855c" strokeWidth="0.8" />
+            {/* Arm leaning on backrest */}
+            <path d="M48 200 L68 152 L78 116 L84 122 L72 153 L58 200 Z" fill="url(#suitGrey)" stroke="#374151" strokeWidth="0.8" />
+            {/* Watch on wrist represented professionally */}
+            <rect x="68" y="146" width="6" height="5" rx="1" fill="#f59e0b" transform="rotate(30 68 146)" />
           </svg>
         </div>
 
         {/* Selection Details */}
-        <div className="text-center mt-5 space-y-1.5 relative pointer-events-none">
+        <div className="text-center mt-5 space-y-1.2 relative pointer-events-none">
           <p className="text-xs font-mono text-brand-500 font-bold uppercase tracking-wider flex items-center justify-center gap-1.5">
-            <Upload className="w-3.5 h-3.5 text-brand-500" />
-            <span>{title}</span>
+            <Upload className="w-3.5 h-3.5 text-[#00ff88]" />
+            <span>Digital Landscape Pose Active</span>
           </p>
-          <p className="text-[11px] text-white/50 font-sans max-w-[220px] mx-auto leading-normal">
-            Drag & drop an alternative photo here, representing your academic research journey.
+          <p className="text-[11px] text-white/60 font-sans max-w-[220px] mx-auto leading-normal">
+            Your second pose in the plush cozy armchair is permanently pre-rendered.
           </p>
           <p className="text-[9px] text-[#00ff88] font-mono tracking-widest uppercase">
-            Armchair / Thoughtful Pose
+            Armchair / Research Thoughtful Pose
           </p>
         </div>
       </div>
@@ -252,7 +406,7 @@ export function AboutSilhouette({
         SYS_STATUS: READY
       </div>
       <div className="absolute bottom-2 right-2 flex items-center gap-1">
-        <span className="w-1.5 h-1.5 rounded-full bg-[#00ff88] animate-pulse" />
+        <span className="w-1.5 h-1.5 rounded-full bg-[#00ff88] " />
         <span className="text-[9px] text-[#00ff88] font-mono">STANDBY_SECURE</span>
       </div>
     </div>
