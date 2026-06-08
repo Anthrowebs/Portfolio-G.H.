@@ -48,7 +48,7 @@ export default function Navbar() {
         {/* Name Logo Link */}
         <a href="#hero" className="flex flex-col group py-1">
           <span className="font-display font-medium text-white group-hover:text-brand-500 transition-colors tracking-tight text-sm sm:text-base leading-snug">
-            G.H. Mohiuddin Munna<span className="text-brand-500">.</span>
+            G.H. Mohiuddin Ahmad Munna<span className="text-brand-500">.</span>
           </span>
           <span className="text-[10px] font-mono text-white/50 group-hover:text-brand-500 transition-colors leading-none uppercase tracking-[0.2em] mt-0.5">
             Researcher & Analyst
