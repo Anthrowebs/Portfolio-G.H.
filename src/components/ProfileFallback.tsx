@@ -19,6 +19,7 @@ export function HeroSilhouette({
   title
 }: FallbackProps) {
   const fileInputRef = React.useRef<HTMLInputElement>(null);
+  const [useStaticImage, setUseStaticImage] = React.useState(true);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
@@ -33,18 +34,46 @@ export function HeroSilhouette({
   return (
     <div 
       id="hero-silhouette-container"
-      className="relative w-full aspect-square md:aspect-[4/5] bg-[#0c1015] rounded-sm border border-white/10 overflow-hidden group transition-all"
+      onClick={handleContainerClick}
+      onDragOver={onDragOver}
+      onDragLeave={onDragLeave}
+      onDrop={onDrop}
+      className={`relative w-full aspect-square md:aspect-[4/5] bg-[#0c1015] rounded-sm border-2 overflow-hidden group cursor-pointer transition-all ${
+        isDragOver 
+          ? "border-brand-500 bg-brand-500/10 scale-[1.01]" 
+          : "border-white/10 hover:border-brand-500/40"
+      }`}
     >
+      <input 
+        id="hero-file-upload-input"
+        type="file" 
+        ref={fileInputRef} 
+        onChange={handleInputChange} 
+        accept="image/*" 
+        className="hidden" 
+      />
+
+      {/* Static Image Loader with Vector Fallback */}
+      {useStaticImage ? (
+        <img 
+          src="/portrait_primary.jpg" 
+          alt="G.H. Mohiuddin Ahmad Munna" 
+          referrerPolicy="no-referrer"
+          onError={() => setUseStaticImage(false)}
+          className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 z-10"
+        />
+      ) : null}
+
       {/* Grid Pattern */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.015)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.015)_1px,transparent_1px)] bg-[size:16px_16px] pointer-events-none" />
 
       {/* Technical decorative lines */}
-      <div className="absolute top-3 left-3 text-[9px] font-mono text-white/30 tracking-widest uppercase">
+      <div className="absolute top-3 left-3 text-[9px] font-mono text-white/30 tracking-widest uppercase z-20">
         PORTRAIT FRAME: G.H._MUNNA_PRIMARY
       </div>
-      <div className="absolute top-3 right-3 flex items-center gap-1.5 text-[9px] font-mono text-brand-500">
+      <div className="absolute top-3 right-3 flex items-center gap-1.5 text-[9px] font-mono text-brand-500 z-20">
         <Aperture className="w-3.5 h-3.5 animate-spin-slow" />
-        <span>CERTIFIED_VECTOR</span>
+        <span>{useStaticImage ? "STATIC_PHOTO_ACTIVE" : "CERTIFIED_VECTOR"}</span>
       </div>
 
       {/* High-fidelity full-color vector art representing Mohiuddin Munna based on his real photo */}
@@ -207,6 +236,7 @@ export function AboutSilhouette({
   title
 }: FallbackProps) {
   const fileInputRef = React.useRef<HTMLInputElement>(null);
+  const [useStaticImage, setUseStaticImage] = React.useState(true);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
@@ -221,18 +251,46 @@ export function AboutSilhouette({
   return (
     <div 
       id="about-silhouette-container"
-      className="relative w-full aspect-square md:aspect-auto md:h-[450px] bg-[#090b10] rounded-sm border border-white/10 overflow-hidden group transition-all"
+      onClick={handleContainerClick}
+      onDragOver={onDragOver}
+      onDragLeave={onDragLeave}
+      onDrop={onDrop}
+      className={`relative w-full aspect-square md:aspect-auto md:h-[450px] bg-[#090b10] rounded-sm border-2 overflow-hidden group cursor-pointer transition-all ${
+        isDragOver 
+          ? "border-[#00ff88] bg-[#00ff88]/10 scale-[1.01]" 
+          : "border-white/10 hover:border-[#00ff88]/40"
+      }`}
     >
+      <input 
+        id="about-file-upload-input"
+        type="file" 
+        ref={fileInputRef} 
+        onChange={handleInputChange} 
+        accept="image/*" 
+        className="hidden" 
+      />
+
+      {/* Static Image Loader with Vector Fallback */}
+      {useStaticImage ? (
+        <img 
+          src="/portrait_secondary.jpg" 
+          alt="G.H. Mohiuddin Ahmad Munna - Academic" 
+          referrerPolicy="no-referrer"
+          onError={() => setUseStaticImage(false)}
+          className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 z-10"
+        />
+      ) : null}
+
       {/* Grid Pattern */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.015)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.015)_1px,transparent_1px)] bg-[size:16px_16px] pointer-events-none" />
 
       {/* Technical details */}
-      <div className="absolute top-3 left-3 text-[9px] font-mono text-white/30 tracking-widest uppercase">
+      <div className="absolute top-3 left-3 text-[9px] font-mono text-white/30 tracking-widest uppercase z-20">
         PORTRAIT FRAME: G.H._MUNNA_SECONDARY
       </div>
-      <div className="absolute top-3 right-3 flex items-center gap-1.5 text-[9px] font-mono text-[#00ff88]">
+      <div className="absolute top-3 right-3 flex items-center gap-1.5 text-[9px] font-mono text-[#00ff88] z-20">
         <Award className="w-3.5 h-3.5 text-[#00ff88]" />
-        <span>ACADEMIC_PORTRAIT</span>
+        <span>{useStaticImage ? "STATIC_PHOTO_ACTIVE" : "ACADEMIC_PORTRAIT"}</span>
       </div>
 
       <div className="w-full h-full flex flex-col items-center justify-center p-4 relative z-10 select-none">

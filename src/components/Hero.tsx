@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "motion/react";
-import { Mail, Phone, MapPin, Linkedin, ArrowRight, Award, Download } from "lucide-react";
+import { Mail, Phone, MapPin, Linkedin, ArrowRight, Award } from "lucide-react";
 import { personalInfo } from "../data/portfolioData";
 import { useProfileImage, HERO_IMAGE_KEY } from "../lib/imageStorage";
 import { HeroSilhouette, ImageCard } from "./ProfileFallback";
@@ -33,79 +33,6 @@ export default function Hero() {
     if (e.dataTransfer.files && e.dataTransfer.files[0]) {
       handleFileSelect(e.dataTransfer.files[0]);
     }
-  };
-
-  const downloadPlaceholderCV = () => {
-    // Generate a simple, formal text-based layout formatted inside a PDF blob structure
-    const cvContent = `%PDF-1.4
-1 0 obj
-<< /Type /Catalog /Pages 2 0 R >>
-endobj
-2 0 obj
-<< /Type /Pages /Kids [3 0 R] /Count 1 >>
-endobj
-3 0 obj
-<< /Type /Page /Parent 2 0 R /Resources << /Font << /F1 4 0 R >> >> /MediaBox [0 0 595.275 841.889] /Contents 5 0 R >>
-endobj
-4 0 obj
-<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
-endobj
-5 0 obj
-<< /Length 500 >>
-stream
-BT
-/F1 18 Tf
-50 780 Td
-(G.H. MOHIUDDIN AHMAD MUNNA - PROFESSIONAL RESUME) Tj
-/F1 12 Tf
-0 -30 Td
-(Social Researcher, WordPress Developer & Web Designer) Tj
-0 -20 Td
-(Email: mohiuddinmunna308@gmail.com | Phone: +8801315564982) Tj
-0 -30 Td
-(PROFESSIONAL PROFILE:) Tj
-0 -15 Td
-(Experienced Social Researcher with a strong MSS background from SUST, specialized) Tj
-0 -15 Td
-(in qualitative methodologies, strategic project management, and AI-assisted workflows.) Tj
-0 -15 Td
-(Accomplished WordPress Developer and Web Designer building responsive custom visuals.) Tj
-0 -30 Td
-(EDUCATION:) Tj
-0 -15 Td
-(MSS in Anthropology - Shahjalal University of Science & Technology (SUST), 2025) Tj
-0 -30 Td
-(KEY CREDENTIALS:) Tj
-0 -15 Td
-(17 Professional Credentials (Google, Gemini AI Certified, Aspire Leaders USA)) Tj
-ET
-endstream
-endobj
-xref
-0 6
-0000000000 65535 f 
-0000000009 00000 n 
-0000000058 00000 n 
-0000000115 00000 n 
-0000000244 00000 n 
-0000000313 00000 n 
-trailer
-<< /Size 6 /Root 1 0 R >>
-startxref
-685
-%%EOF`;
-
-    const blob = new Blob([cvContent], { type: "application/pdf" });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement("a");
-    link.href = url;
-    link.download = "G_H_Mohiuddin_Ahmad_Munna_CV.pdf";
-    document.body.appendChild(link);
-    link.click();
-    
-    // Clean up
-    document.body.removeChild(link);
-    URL.revokeObjectURL(url);
   };
 
   const containerVariants = {
@@ -187,7 +114,7 @@ startxref
             </motion.div>
 
             {/* CTA action cluster */}
-            <motion.div variants={itemVariants} className="flex flex-col sm:flex-row flex-wrap gap-4 pt-4">
+            <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-4 pt-4">
               <a 
                 href="#contact" 
                 className="inline-flex items-center justify-center gap-2 bg-brand-500 hover:bg-brand-600 text-[#0a0a0a] font-mono font-bold uppercase tracking-wider px-6 py-3.5 rounded-sm shadow-md transition-all transform hover:-translate-y-0.5 active:translate-y-0 text-xs"
@@ -195,14 +122,6 @@ startxref
                 <span>Hire / Collaborate</span>
                 <ArrowRight className="w-4 h-4" />
               </a>
-              <button 
-                id="hero-download-cv-btn"
-                onClick={downloadPlaceholderCV}
-                className="inline-flex items-center justify-center gap-2 bg-brand-500/10 hover:bg-brand-500/20 text-brand-500 border border-brand-500/30 hover:border-brand-500/50 font-mono font-bold uppercase tracking-wider px-6 py-3.5 rounded-sm transition-all transform hover:-translate-y-0.5 active:translate-y-0 text-xs cursor-pointer"
-              >
-                <Download className="w-4 h-4" />
-                <span>Download CV</span>
-              </button>
               <a 
                 href="#experience" 
                 className="inline-flex items-center justify-center gap-2 bg-white/5 hover:bg-white/10 text-white border border-white/15 shadow-xs font-mono font-medium uppercase tracking-wider px-6 py-3.5 rounded-sm transition-all text-xs"
