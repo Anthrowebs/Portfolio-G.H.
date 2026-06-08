@@ -7,12 +7,18 @@ import { CertificateItem } from "../types";
 export default function Certificates() {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCert, setSelectedCert] = useState<CertificateItem | null>(null);
+  const [showRealImage, setShowRealImage] = useState(true);
 
   const filteredCerts = certificatesList.filter(
     (cert) =>
       cert.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
       cert.issuer.toLowerCase().includes(searchTerm.toLowerCase())
   );
+
+  const handleSelectCert = (cert: CertificateItem) => {
+    setSelectedCert(cert);
+    setShowRealImage(true); // reset to show actual document first if available
+  };
 
   return (
     <section id="certificates" className="py-20 bg-[#0a0a0a] border-t border-b border-white/10">
@@ -48,7 +54,7 @@ export default function Certificates() {
           {filteredCerts.map((cert) => (
             <div 
               key={cert.id}
-              onClick={() => setSelectedCert(cert)}
+              onClick={() => handleSelectCert(cert)}
               className="group bg-white/5 border border-white/10 rounded-sm p-5 shadow-2xs hover:border-brand-500/40 hover:-translate-y-0.5 transition-all cursor-pointer flex flex-col justify-between"
             >
               <div>
@@ -100,79 +106,130 @@ export default function Certificates() {
                 {/* Header Close Control */}
                 <button 
                   onClick={() => setSelectedCert(null)}
-                  className="absolute right-4 top-4 p-1.5 rounded-full bg-white/5 hover:bg-white/10 text-white/80 transition-colors z-10 cursor-pointer"
+                  className="absolute right-4 top-4 p-1.5 rounded-full bg-white/5 hover:bg-white/15 text-white/80 transition-colors z-30 cursor-pointer"
                 >
                   <X className="w-4.5 h-4.5" />
                 </button>
 
-                {/* Simulated Certificate UI Card */}
-                <div className="p-6 sm:p-12 relative border-[10px] border-double border-brand-500/25 m-2 rounded-sm bg-[#111111]">
-                  {/* Decorative background watermark */}
-                  <div className="absolute inset-0 flex items-center justify-center opacity-[0.02] pointer-events-none">
-                    <Award className="w-96 h-96 text-white" />
+                {/* Verification View Modes Toggle for real photos */}
+                {selectedCert.image && (
+                  <div className="flex border-b border-white/10 px-6 pt-5 bg-[#0f1115] gap-5 relative z-25">
+                    <button
+                      onClick={() => setShowRealImage(true)}
+                      className={`pb-3 font-mono text-xs font-bold uppercase tracking-wider transition-all cursor-pointer border-b-2 outline-none ${
+                        showRealImage 
+                          ? "border-brand-500 text-brand-500" 
+                          : "border-transparent text-white/50 hover:text-white/80"
+                      }`}
+                    >
+                      📄 Document Photo
+                    </button>
+                    <button
+                      onClick={() => setShowRealImage(false)}
+                      className={`pb-3 font-mono text-xs font-bold uppercase tracking-wider transition-all cursor-pointer border-b-2 outline-none ${
+                        !showRealImage 
+                          ? "border-brand-500 text-brand-500" 
+                          : "border-transparent text-white/50 hover:text-white/80"
+                      }`}
+                    >
+                      🏛️ Digital Verification Seal
+                    </button>
                   </div>
+                )}
 
-                  {/* Header logos and seals */}
-                  <div className="flex justify-between items-start border-b border-white/10 pb-6 mb-8">
-                    <div>
-                      <span className="text-[10px] font-semibold tracking-widest text-[#00ff88] font-mono">VERIFIED CREDENTIAL</span>
-                      <h4 className="text-lg font-display font-medium text-white mt-1 flex items-center gap-1.5 uppercase font-bold tracking-wider">
-                        <Award className="w-5 h-5 text-brand-500" />
-                        <span>Professional Qualification</span>
-                      </h4>
+                {/* Main Viewport Content */}
+                {selectedCert.image && showRealImage ? (
+                  <div className="p-5 sm:p-8 bg-[#111216] flex flex-col items-center justify-center min-h-[300px] m-2 border border-white/10 rounded-sm">
+                    <div 
+                      className="relative group w-full flex justify-center cursor-zoom-out" 
+                      onClick={() => setSelectedCert(null)}
+                      title="Click image to close viewer"
+                    >
+                      <img 
+                        src={selectedCert.image} 
+                        alt={selectedCert.title} 
+                        referrerPolicy="no-referrer"
+                        className="max-h-[460px] w-auto max-w-full object-contain shadow-2xl rounded-sm border border-white/10 transition-transform duration-500 group-hover:scale-[1.04]"
+                        onError={() => {
+                          setShowRealImage(false);
+                        }}
+                      />
                     </div>
-                    <div className="text-right">
-                      <span className="text-xs font-mono text-white/50">ISSUED IN: {selectedCert.year}</span>
+                    <div className="mt-4 text-center">
+                      <h4 className="text-sm font-sans font-bold text-white tracking-wide mb-1 px-4">{selectedCert.title}</h4>
+                      <p className="text-[11px] font-mono text-white/40 uppercase tracking-widest">Click image to close • Issued by <span className="text-brand-500">{selectedCert.issuer}</span></p>
                     </div>
                   </div>
-
-                  {/* Certificate Content text */}
-                  <div className="text-center space-y-4 my-8">
-                    <p className="text-[10px] uppercase tracking-[0.25em] font-mono text-white/40">
-                      THIS CERTIFIES THAT
-                    </p>
-                    <h3 className="text-xl sm:text-2xl font-display font-bold text-white border-b border-white/5 max-w-lg mx-auto pb-2 capitalize tracking-wide">
-                      G.H. Mohiuddin Ahmad Munna
-                    </h3>
-                    <p className="text-xs sm:text-sm font-light text-white/70 max-w-md mx-auto leading-relaxed">
-                      has successfully met all programmatic standards and completed all academic and practical testing criteria required to achieve the certification course of:
-                    </p>
-                    <h4 className="text-base sm:text-lg font-display font-bold text-[#00ff88] tracking-tight leading-snug px-6 max-w-xl mx-auto">
-                      {selectedCert.title}
-                    </h4>
-                    <p className="text-[10px] font-mono text-white/40">
-                      Issued and verified by the authorized organization
-                    </p>
-                    <p className="text-xs font-semibold text-brand-500 font-mono tracking-widest uppercase bg-brand-500/10 border border-brand-500/20 inline-block px-3 py-1 rounded-sm">
-                      {selectedCert.issuer}
-                    </p>
-                  </div>
-
-                  {/* Footer & Signature Simulation */}
-                  <div className="flex flex-col sm:flex-row justify-between items-center border-t border-white/5 pt-8 mt-10 gap-6">
-                    <div className="text-center sm:text-left">
-                      <p className="text-[10px] font-semibold uppercase tracking-widest text-white/40 font-mono">VERIFICATION ID</p>
-                      <p className="text-xs font-mono text-white/80 mt-1 uppercase tracking-wider">AIS-MUNNA-{selectedCert.id.toUpperCase()}-2026</p>
+                ) : (
+                  /* Simulated Certificate UI Card */
+                  <div className="p-6 sm:p-12 relative border-[10px] border-double border-brand-500/25 m-2 rounded-sm bg-[#111111]">
+                    {/* Decorative background watermark */}
+                    <div className="absolute inset-0 flex items-center justify-center opacity-[0.02] pointer-events-none">
+                      <Award className="w-96 h-96 text-white" />
                     </div>
 
-                    {/* Neon Medal Visual Seal */}
-                    <div className="flex flex-col items-center justify-center">
-                      <div className="w-14 h-14 bg-brand-500/10 rounded-full flex items-center justify-center border-4 border-dashed border-brand-500 text-brand-500 shadow-md">
-                        <Award className="w-6 h-6 text-brand-500" />
+                    {/* Header logos and seals */}
+                    <div className="flex justify-between items-start border-b border-white/10 pb-6 mb-8">
+                      <div>
+                        <span className="text-[10px] font-semibold tracking-widest text-[#00ff88] font-mono">VERIFIED CREDENTIAL</span>
+                        <h4 className="text-lg font-display font-medium text-white mt-1 flex items-center gap-1.5 uppercase font-bold tracking-wider">
+                          <Award className="w-5 h-5 text-brand-500" />
+                          <span>Professional Qualification</span>
+                        </h4>
                       </div>
-                      <span className="text-[8px] font-mono font-bold tracking-widest text-[#00ff88] uppercase mt-1">SECURE VERIFIED</span>
+                      <div className="text-right">
+                        <span className="text-xs font-mono text-white/50">ISSUED IN: {selectedCert.year}</span>
+                      </div>
                     </div>
 
-                    <div className="text-center sm:text-right font-mono">
-                      <p className="text-[10px] font-semibold uppercase tracking-widest text-white/40">STATUS</p>
-                      <p className="text-xs text-brand-500 font-bold mt-1 uppercase flex items-center justify-center sm:justify-end gap-1">
-                        <span className="w-2 h-2 rounded-full bg-brand-500 inline-block animate-ping"></span>
-                        <span>ACTIVE & VALID</span>
+                    {/* Certificate Content text */}
+                    <div className="text-center space-y-4 my-8">
+                      <p className="text-[10px] uppercase tracking-[0.25em] font-mono text-white/40">
+                        THIS CERTIFIES THAT
+                      </p>
+                      <h3 className="text-xl sm:text-2xl font-display font-bold text-white border-b border-white/5 max-w-lg mx-auto pb-2 capitalize tracking-wide">
+                        G.H. Mohiuddin Ahmad Munna
+                      </h3>
+                      <p className="text-xs sm:text-sm font-light text-white/70 max-w-md mx-auto leading-relaxed">
+                        has successfully met all programmatic standards and completed all academic and practical testing criteria required to achieve the certification course of:
+                      </p>
+                      <h4 className="text-base sm:text-lg font-display font-bold text-[#00ff88] tracking-tight leading-snug px-6 max-w-xl mx-auto">
+                        {selectedCert.title}
+                      </h4>
+                      <p className="text-[10px] font-mono text-white/40">
+                        Issued and verified by the authorized organization
+                      </p>
+                      <p className="text-xs font-semibold text-brand-500 font-mono tracking-widest uppercase bg-brand-500/10 border border-brand-500/20 inline-block px-3 py-1 rounded-sm">
+                        {selectedCert.issuer}
                       </p>
                     </div>
-                  </div>
 
-                </div>
+                    {/* Footer & Signature Simulation */}
+                    <div className="flex flex-col sm:flex-row justify-between items-center border-t border-white/5 pt-8 mt-10 gap-6">
+                      <div className="text-center sm:text-left">
+                        <p className="text-[10px] font-semibold uppercase tracking-widest text-white/40 font-mono">VERIFICATION ID</p>
+                        <p className="text-xs font-mono text-white/80 mt-1 uppercase tracking-wider">AIS-MUNNA-{selectedCert.id.toUpperCase()}-2026</p>
+                      </div>
+
+                      {/* Neon Medal Visual Seal */}
+                      <div className="flex flex-col items-center justify-center">
+                        <div className="w-14 h-14 bg-brand-500/10 rounded-full flex items-center justify-center border-4 border-dashed border-brand-500 text-brand-500 shadow-md">
+                          <Award className="w-6 h-6 text-brand-500" />
+                        </div>
+                        <span className="text-[8px] font-mono font-bold tracking-widest text-[#00ff88] uppercase mt-1">SECURE VERIFIED</span>
+                      </div>
+
+                      <div className="text-center sm:text-right font-mono">
+                        <p className="text-[10px] font-semibold uppercase tracking-widest text-white/40">STATUS</p>
+                        <p className="text-xs text-brand-500 font-bold mt-1 uppercase flex items-center justify-center sm:justify-end gap-1">
+                          <span className="w-2 h-2 rounded-full bg-brand-500 inline-block animate-ping"></span>
+                          <span>ACTIVE & VALID</span>
+                        </p>
+                      </div>
+                    </div>
+
+                  </div>
+                )}
 
                 {/* Action button bar */}
                 <div className="bg-[#121212] border-t border-white/10 p-4 flex flex-col sm:flex-row sm:justify-end gap-3 rounded-b-sm">

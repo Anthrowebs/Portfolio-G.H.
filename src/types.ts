@@ -40,6 +40,7 @@ export interface CertificateItem {
   issuer: string;
   year: string;
   badgeColor?: string;
+  image?: string;
 }
 
 export interface SkillCategory {

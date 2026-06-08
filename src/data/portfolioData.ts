@@ -99,20 +99,27 @@ export const technicalSkills: SkillCategory[] = [
   }
 ];
 
+export const certificatesList: CertificateItem[] = [
+  { id: "cert-1", title: "AI and Career Empowerment", issuer: "University of Maryland, Smith School of Business", year: "2026", badgeColor: "bg-amber-100 text-amber-800", image: "/1.jpg" },
+  { id: "cert-2", title: "Analyzing Data with Power BI", issuer: "Analytics Vidhya", year: "2026", badgeColor: "bg-blue-100 text-blue-800", image: "/2.jpg" },
+  { id: "cert-3", title: "Cyber Hygiene Training", issuer: "The Asia Foundation & SAJIDA Foundation", year: "2026", badgeColor: "bg-emerald-100 text-emerald-800", image: "/3.jpg" },
+  { id: "cert-4", title: "Design Power BI Reports", issuer: "Microsoft", year: "2026", badgeColor: "bg-blue-100 text-blue-800", image: "/4.jpg" },
+  { id: "cert-5", title: "Get Started Building with Power BI", issuer: "Microsoft", year: "2026", badgeColor: "bg-blue-100 text-blue-800", image: "/5.jpg" },
+  { id: "cert-6", title: "Project Management Foundations", issuer: "Simplilearn", year: "2026", badgeColor: "bg-indigo-100 text-indigo-800", image: "/6.jpg" },
+  { id: "cert-7", title: "Siemens Project Manager Job Simulation", issuer: "Forage", year: "2026", badgeColor: "bg-amber-100 text-amber-800", image: "/7.jpg" },
+  { id: "cert-8", title: "Aspire Leaders Program – Cohort 5", issuer: "Aspire Institute, USA", year: "2025", badgeColor: "bg-purple-100 text-purple-800", image: "/8.png" },
+  { id: "cert-9", title: "Elevate Your Public Speaking", issuer: "BOHUBRIHI", year: "2025", badgeColor: "bg-rose-100 text-rose-800", image: "/9.jpg" },
+  { id: "cert-10", title: "Enhance Teaching with Microsoft 365 Copilot", issuer: "Microsoft", year: "2025", badgeColor: "bg-cyan-100 text-cyan-800", image: "/10.jpg" },
+  { id: "cert-11", title: "Gemini Certified Educator (2025–2028)", issuer: "Google for Education", year: "2025", badgeColor: "bg-sky-100 text-sky-800", image: "/11.png" },
+  { id: "cert-12", title: "Google Certified Educator Level 1 (2025–2028)", issuer: "Google for Education", year: "2025", badgeColor: "bg-sky-100 text-sky-800", image: "/12.png" },
+  { id: "cert-13", title: "Introduction to Generative AI & Agents", issuer: "Microsoft", year: "2025", badgeColor: "bg-purple-100 text-purple-800", image: "/13.jpg" },
+  { id: "cert-14", title: "Resume Writing", issuer: "Mentors Learning", year: "2025", badgeColor: "bg-zinc-100 text-zinc-800", image: "/14.jpg" },
+  { id: "cert-15", title: "Scientific Manuscript Writing", issuer: "Dept. of Anthropology, SUST", year: "2025", badgeColor: "bg-teal-100 text-teal-800", image: "/15.jpg" },
+  { id: "cert-16", title: "TeachingEnglish: Managing Learning", issuer: "British Council", year: "2025", badgeColor: "bg-red-100 text-red-800", image: "/16.jpg" },
+  { id: "cert-17", title: "WordPress & CMS Development", issuer: "Times IT", year: "2025", badgeColor: "bg-violet-100 text-violet-800", image: "/17.jpg" }
+];
+
 export const researchExperience: ResearchExperienceItem[] = [
-  {
-    id: "exp-1",
-    role: "Research Assistant",
-    organisation: "Department of Anthropology, SUST | Government-Directed University Research",
-    project: "Conceptualizing “Pedagogical Competence” of Sexual & Reproductive Health (SRH): A qualitative exploration into the discursive barriers to SRH in the Bangladesh sexuality education curriculum.",
-    period: "March 2025 – March 2026",
-    bullets: [
-      "Conducted in-depth interviews and focus group discussions (FGDs) with study participants across field sites.",
-      "Built participant rapport and maintained ethical field observation practices throughout data collection.",
-      "Managed transcription of recorded interviews.",
-      "Contributed to manuscript drafting for academic publication."
-    ]
-  },
   {
     id: "exp-2",
     role: "Research Assistant",
@@ -245,26 +252,6 @@ export const memberships = [
   { organisation: "Freire Institute", role: "Professional Member", period: "April 2026 – Present" },
   { organisation: "International Peace Bureau (IPB)", role: "Individual Member", period: "May 2026 – Present" },
   { organisation: "Amnesty International", role: "International Member", period: "April 2026 – Present" }
-];
-
-export const certificatesList: CertificateItem[] = [
-  { id: "cert-1", title: "AI and Career Empowerment", issuer: "University of Maryland, Smith School of Business", year: "2026", badgeColor: "bg-amber-100 text-amber-800" },
-  { id: "cert-2", title: "Analyzing Data with Power BI", issuer: "Analytics Vidhya", year: "2026", badgeColor: "bg-blue-100 text-blue-800" },
-  { id: "cert-3", title: "Cyber Hygiene Training", issuer: "The Asia Foundation & SAJIDA Foundation", year: "2026", badgeColor: "bg-emerald-100 text-emerald-800" },
-  { id: "cert-4", title: "Design Power BI Reports", issuer: "Microsoft", year: "2026", badgeColor: "bg-blue-100 text-blue-800" },
-  { id: "cert-5", title: "Get Started Building with Power BI", issuer: "Microsoft", year: "2026", badgeColor: "bg-blue-100 text-blue-800" },
-  { id: "cert-6", title: "Project Management Foundations", issuer: "Simplilearn", year: "2026", badgeColor: "bg-indigo-100 text-indigo-800" },
-  { id: "cert-7", title: "Siemens Project Manager Job Simulation", issuer: "Forage", year: "2026", badgeColor: "bg-amber-100 text-amber-800" },
-  { id: "cert-8", title: "Aspire Leaders Program – Cohort 5", issuer: "Aspire Institute, USA", year: "2025", badgeColor: "bg-purple-100 text-purple-800" },
-  { id: "cert-9", title: "Elevate Your Public Speaking", issuer: "BOHUBRIHI", year: "2025", badgeColor: "bg-rose-100 text-rose-800" },
-  { id: "cert-10", title: "Enhance Teaching with Microsoft 365 Copilot", issuer: "Microsoft", year: "2025", badgeColor: "bg-cyan-100 text-cyan-800" },
-  { id: "cert-11", title: "Gemini Certified Educator (2025–2028)", issuer: "Google for Education", year: "2025", badgeColor: "bg-sky-100 text-sky-800" },
-  { id: "cert-12", title: "Google Certified Educator Level 1 (2025–2028)", issuer: "Google for Education", year: "2025", badgeColor: "bg-sky-100 text-sky-800" },
-  { id: "cert-13", title: "Introduction to Generative AI & Agents", issuer: "Microsoft", year: "2025", badgeColor: "bg-purple-100 text-purple-800" },
-  { id: "cert-14", title: "Resume Writing", issuer: "Mentors Learning", year: "2025", badgeColor: "bg-zinc-100 text-zinc-800" },
-  { id: "cert-15", title: "Scientific Manuscript Writing", issuer: "Dept. of Anthropology, SUST", year: "2025", badgeColor: "bg-teal-100 text-teal-800" },
-  { id: "cert-16", title: "TeachingEnglish: Managing Learning", issuer: "British Council", year: "2025", badgeColor: "bg-red-100 text-red-800" },
-  { id: "cert-17", title: "WordPress & CMS Development", issuer: "Times IT", year: "2025", badgeColor: "bg-violet-100 text-violet-800" }
 ];
 
 export const languages = [
