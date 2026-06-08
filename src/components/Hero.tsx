@@ -1,40 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import { motion } from "motion/react";
 import { Mail, Phone, MapPin, Linkedin, ArrowRight, Award } from "lucide-react";
 import { personalInfo } from "../data/portfolioData";
-import { useProfileImage, HERO_IMAGE_KEY } from "../lib/imageStorage";
-import { HeroSilhouette, ImageCard } from "./ProfileFallback";
+import { HeroSilhouette } from "./ProfileFallback";
 
 export default function Hero() {
-  const { image, updateImage, removeImage } = useProfileImage(HERO_IMAGE_KEY, "hero");
-  const [isDragOver, setIsDragOver] = useState(false);
-
-  const handleFileSelect = (file: File) => {
-    updateImage(file, () => {
-      // Success
-    }, (err) => {
-      alert(err);
-    });
-  };
-
-  const handleDragOver = (e: React.DragEvent) => {
-    e.preventDefault();
-    setIsDragOver(true);
-  };
-
-  const handleDragLeave = (e: React.DragEvent) => {
-    e.preventDefault();
-    setIsDragOver(false);
-  };
-
-  const handleDrop = (e: React.DragEvent) => {
-    e.preventDefault();
-    setIsDragOver(false);
-    if (e.dataTransfer.files && e.dataTransfer.files[0]) {
-      handleFileSelect(e.dataTransfer.files[0]);
-    }
-  };
-
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: { 
@@ -134,22 +104,7 @@ export default function Hero() {
           {/* Hero Right Column (Avatar and Stats) */}
           <div className="lg:col-span-4 flex flex-col gap-6 w-full">
             <motion.div variants={itemVariants}>
-              {image ? (
-                <ImageCard 
-                  imageSrc={image} 
-                  onRemove={removeImage} 
-                  title="G.H. Mohiuddin Ahmad Munna" 
-                />
-              ) : (
-                <HeroSilhouette
-                  onFileSelect={handleFileSelect}
-                  isDragOver={isDragOver}
-                  onDragOver={handleDragOver}
-                  onDragLeave={handleDragLeave}
-                  onDrop={handleDrop}
-                  title="Primary Portfolio Portrait"
-                />
-              )}
+              <HeroSilhouette />
             </motion.div>
 
             {/* Academic & Tech Profile Stats */}

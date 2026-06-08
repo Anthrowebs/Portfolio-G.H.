@@ -1,40 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import { motion } from "motion/react";
 import { User, Shield, CheckCircle, Globe2, BookOpen, Clock } from "lucide-react";
 import { personalInfo, coreCompetencies, memberships, languages } from "../data/portfolioData";
-import { useProfileImage, ABOUT_IMAGE_KEY } from "../lib/imageStorage";
-import { AboutSilhouette, ImageCard } from "./ProfileFallback";
+import { AboutSilhouette } from "./ProfileFallback";
 
 export default function About() {
-  const { image, updateImage, removeImage } = useProfileImage(ABOUT_IMAGE_KEY, "about");
-  const [isDragOver, setIsDragOver] = useState(false);
-
-  const handleFileSelect = (file: File) => {
-    updateImage(file, () => {
-      // Success
-    }, (err) => {
-      alert(err);
-    });
-  };
-
-  const handleDragOver = (e: React.DragEvent) => {
-    e.preventDefault();
-    setIsDragOver(true);
-  };
-
-  const handleDragLeave = (e: React.DragEvent) => {
-    e.preventDefault();
-    setIsDragOver(false);
-  };
-
-  const handleDrop = (e: React.DragEvent) => {
-    e.preventDefault();
-    setIsDragOver(false);
-    if (e.dataTransfer.files && e.dataTransfer.files[0]) {
-      handleFileSelect(e.dataTransfer.files[0]);
-    }
-  };
-
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: { 
@@ -76,22 +46,7 @@ export default function About() {
           {/* Column 1: Secondary Academic Photo Frame */}
           <div className="lg:col-span-4 flex flex-col w-full">
             <motion.div variants={itemVariants} className="h-full">
-              {image ? (
-                <ImageCard 
-                  imageSrc={image} 
-                  onRemove={removeImage} 
-                  title="G.H. Mohiuddin Ahmad Munna - Academic Pose" 
-                />
-              ) : (
-                <AboutSilhouette
-                  onFileSelect={handleFileSelect}
-                  isDragOver={isDragOver}
-                  onDragOver={handleDragOver}
-                  onDragLeave={handleDragLeave}
-                  onDrop={handleDrop}
-                  title="Alternative Portrait"
-                />
-              )}
+              <AboutSilhouette />
             </motion.div>
           </div>
 
