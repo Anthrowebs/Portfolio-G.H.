@@ -33,35 +33,18 @@ export function HeroSilhouette({
   return (
     <div 
       id="hero-silhouette-container"
-      onClick={handleContainerClick}
-      onDragOver={onDragOver}
-      onDragLeave={onDragLeave}
-      onDrop={onDrop}
-      className={`relative w-full aspect-square md:aspect-[4/5] bg-[#0c1015] rounded-sm border-2 overflow-hidden group cursor-pointer transition-all ${
-        isDragOver 
-          ? "border-brand-500 bg-brand-500/10 scale-[1.01]" 
-          : "border-white/10 hover:border-brand-500/40"
-      }`}
+      className="relative w-full aspect-square md:aspect-[4/5] bg-[#0c1015] rounded-sm border border-white/10 overflow-hidden group transition-all"
     >
-      <input 
-        id="hero-file-upload-input"
-        type="file" 
-        ref={fileInputRef} 
-        onChange={handleInputChange} 
-        accept="image/*" 
-        className="hidden" 
-      />
-
       {/* Grid Pattern */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.015)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.015)_1px,transparent_1px)] bg-[size:16px_16px] pointer-events-none" />
 
       {/* Technical decorative lines */}
       <div className="absolute top-3 left-3 text-[9px] font-mono text-white/30 tracking-widest uppercase">
-        REF: G.H._MUNNA_PORTRAIT
+        PORTRAIT FRAME: G.H._MUNNA_PRIMARY
       </div>
       <div className="absolute top-3 right-3 flex items-center gap-1.5 text-[9px] font-mono text-brand-500">
         <Aperture className="w-3.5 h-3.5 animate-spin-slow" />
-        <span>STANDBY_PRESET</span>
+        <span>CERTIFIED_VECTOR</span>
       </div>
 
       {/* High-fidelity full-color vector art representing Mohiuddin Munna based on his real photo */}
@@ -190,16 +173,15 @@ export function HeroSilhouette({
         </div>
 
         {/* Action Call text inside card */}
-        <div className="text-center mt-5 space-y-1.2 relative pointer-events-none">
-          <p className="text-xs font-mono text-brand-500 font-bold uppercase tracking-wider flex items-center justify-center gap-1.5">
-            <Upload className="w-3.5 h-3.5 text-brand-500" />
-            <span>Digital Vector Portrait Active</span>
+        <div className="text-center mt-5 space-y-1 relative pointer-events-none">
+          <p className="text-xs font-mono text-brand-500 font-bold uppercase tracking-wider">
+            G.H. Mohiuddin Ahmad Munna
           </p>
-          <p className="text-[11px] text-white/60 font-sans max-w-[240px] mx-auto leading-normal">
-            Drag & drop another photo to override, or keep this beautifully designed permanent profile illustration!
+          <p className="text-[14px] text-white font-sans font-medium">
+            Primary Digital Portrait
           </p>
-          <p className="text-[9px] text-white/35 font-mono">
-            Secure offline storage. Click to upload custom JPG/PNG.
+          <p className="text-[11px] text-white/50 font-sans max-w-[240px] mx-auto leading-normal">
+            High-fidelity vector artwork representing first-preference business and executive profile.
           </p>
         </div>
       </div>
@@ -239,35 +221,18 @@ export function AboutSilhouette({
   return (
     <div 
       id="about-silhouette-container"
-      onClick={handleContainerClick}
-      onDragOver={onDragOver}
-      onDragLeave={onDragLeave}
-      onDrop={onDrop}
-      className={`relative w-full aspect-square md:aspect-auto md:h-[450px] bg-[#090b10] rounded-sm border-2 overflow-hidden group cursor-pointer transition-all ${
-        isDragOver 
-          ? "border-[#00ff88] bg-[#00ff88]/10 scale-[1.01]" 
-          : "border-white/10 hover:border-[#00ff88]/40"
-      }`}
+      className="relative w-full aspect-square md:aspect-auto md:h-[450px] bg-[#090b10] rounded-sm border border-white/10 overflow-hidden group transition-all"
     >
-      <input 
-        id="about-file-upload-input"
-        type="file" 
-        ref={fileInputRef} 
-        onChange={handleInputChange} 
-        accept="image/*" 
-        className="hidden" 
-      />
-
       {/* Grid Pattern */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.015)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.015)_1px,transparent_1px)] bg-[size:16px_16px] pointer-events-none" />
 
       {/* Technical details */}
       <div className="absolute top-3 left-3 text-[9px] font-mono text-white/30 tracking-widest uppercase">
-        LOC: G.H._MUNNA_ACADEMIC_POSE
+        PORTRAIT FRAME: G.H._MUNNA_SECONDARY
       </div>
       <div className="absolute top-3 right-3 flex items-center gap-1.5 text-[9px] font-mono text-[#00ff88]">
         <Award className="w-3.5 h-3.5 text-[#00ff88]" />
-        <span>THOUGHTFUL_ACADEMIC_POSE</span>
+        <span>ACADEMIC_PORTRAIT</span>
       </div>
 
       <div className="w-full h-full flex flex-col items-center justify-center p-4 relative z-10 select-none">
@@ -388,26 +353,25 @@ export function AboutSilhouette({
         </div>
 
         {/* Selection Details */}
-        <div className="text-center mt-5 space-y-1.2 relative pointer-events-none">
-          <p className="text-xs font-mono text-brand-500 font-bold uppercase tracking-wider flex items-center justify-center gap-1.5">
-            <Upload className="w-3.5 h-3.5 text-[#00ff88]" />
-            <span>Digital Landscape Pose Active</span>
+        <div className="text-center mt-5 space-y-1 relative pointer-events-none">
+          <p className="text-xs font-mono text-[#00ff88] font-bold uppercase tracking-wider">
+            G.H. Mohiuddin Ahmad Munna
           </p>
-          <p className="text-[11px] text-white/60 font-sans max-w-[220px] mx-auto leading-normal">
-            Your second pose in the plush cozy armchair is permanently pre-rendered.
+          <p className="text-[14px] text-white font-sans font-medium">
+            Research & Academic Portrait
           </p>
-          <p className="text-[9px] text-[#00ff88] font-mono tracking-widest uppercase">
-            Armchair / Research Thoughtful Pose
+          <p className="text-[11px] text-white/50 font-sans max-w-[220px] mx-auto leading-normal">
+            Digital illustration in academic library/study space, reflecting your fieldwork and focus.
           </p>
         </div>
       </div>
 
       <div className="absolute bottom-2 left-2 text-[10px] text-white/20 font-mono tracking-wider">
-        SYS_STATUS: READY
+        SYS_STATUS: ACTIVE
       </div>
       <div className="absolute bottom-2 right-2 flex items-center gap-1">
-        <span className="w-1.5 h-1.5 rounded-full bg-[#00ff88] " />
-        <span className="text-[9px] text-[#00ff88] font-mono">STANDBY_SECURE</span>
+        <span className="w-1.5 h-1.5 rounded-full bg-[#00ff88]" />
+        <span className="text-[9px] text-[#00ff88] font-mono">PORTRAIT_LOCKED</span>
       </div>
     </div>
   );
