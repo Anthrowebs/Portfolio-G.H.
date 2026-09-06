@@ -100,7 +100,7 @@ export default function About() {
                 <span>Memberships</span>
               </h3>
               <div className="space-y-3">
-                {memberships.slice(0, 3).map((member, idx) => (
+                {memberships.slice(0, 5).map((member, idx) => (
                   <div key={idx} className="flex gap-2 justify-between items-start">
                     <div>
                       <h4 className="text-[11px] font-semibold text-white font-mono tracking-tight leading-tight">

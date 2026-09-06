@@ -7,6 +7,14 @@ export interface EducationItem {
   result: string;
 }
 
+export interface EmploymentItem {
+  id: string;
+  role: string;
+  organisation: string;
+  period: string;
+  bullets: string[];
+}
+
 export interface ResearchExperienceItem {
   id: string;
   role: string;

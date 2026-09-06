@@ -1,14 +1,15 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { Briefcase, Milestone, Award, Users, Mail, Phone, Calendar, ArrowUpRight } from "lucide-react";
-import { researchExperience, leadershipEngagement, conferencePresentations, references } from "../data/portfolioData";
+import { Briefcase, Milestone, Award, Users, Mail, Phone, Calendar, ArrowUpRight, BadgeCheck } from "lucide-react";
+import { employmentExperience, researchExperience, leadershipEngagement, conferencePresentations, references } from "../data/portfolioData";
 
-type TabType = "research" | "leadership" | "conferences" | "references";
+type TabType = "internship" | "research" | "leadership" | "conferences" | "references";
 
 export default function Experience() {
-  const [activeTab, setActiveTab] = useState<TabType>("research");
+  const [activeTab, setActiveTab] = useState<TabType>("internship");
 
   const tabOptions = [
+    { id: "internship" as TabType, label: "Internship", icon: <BadgeCheck className="w-4 h-4" /> },
     { id: "research" as TabType, label: "Research Projects", icon: <Briefcase className="w-4 h-4" /> },
     { id: "leadership" as TabType, label: "Leadership & Engagement", icon: <Milestone className="w-4 h-4" /> },
     { id: "conferences" as TabType, label: "Conference Presentations", icon: <Award className="w-4 h-4 text-amber-500" /> },
@@ -53,7 +54,50 @@ export default function Experience() {
         {/* Tab Content Display Area */}
         <div className="min-h-[400px]">
           <AnimatePresence mode="wait">
-            
+
+            {/* INTERNSHIP */}
+            {activeTab === "internship" && (
+              <motion.div
+                key="internship"
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -15 }}
+                transition={{ duration: 0.25 }}
+                className="space-y-8"
+              >
+                {employmentExperience.map((emp) => (
+                  <div key={emp.id} className="relative pl-6 sm:pl-8 border-l-2 border-white/10 hover:border-brand-500 transition-colors py-1 group">
+                    {/* Circle marker */}
+                    <span className="absolute -left-[9px] top-2.5 w-4 h-4 bg-[#0d0d0d] border-2 border-brand-500 rounded-full group-hover:bg-brand-500 transition-colors z-10" />
+
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
+                      <div>
+                        <span className="text-xs font-mono font-medium text-brand-500 bg-[#121212] px-2 py-0.5 rounded-sm border border-white/10">
+                          {emp.role}
+                        </span>
+                        <h4 className="text-lg font-display font-bold text-white mt-2 leading-snug">
+                          {emp.organisation}
+                        </h4>
+                      </div>
+
+                      <span className="inline-flex items-center gap-1 text-xs font-mono text-white/60 bg-white/5 border border-white/10 px-2.5 py-1 rounded-sm w-fit">
+                        <Calendar className="w-3 h-3" />
+                        <span>{emp.period}</span>
+                      </span>
+                    </div>
+
+                    <div className="mt-3">
+                      <ul className="space-y-2 text-sm text-white/70 font-sans list-disc list-outside pl-4">
+                        {emp.bullets.map((bullet, index) => (
+                          <li key={index}>{bullet}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                ))}
+              </motion.div>
+            )}
+
             {/* RESEARCH PROJECTS */}
             {activeTab === "research" && (
               <motion.div

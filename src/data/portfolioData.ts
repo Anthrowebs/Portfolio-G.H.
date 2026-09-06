@@ -1,5 +1,6 @@
 import { 
   EducationItem, 
+  EmploymentItem,
   ResearchExperienceItem, 
   ConferenceItem, 
   LeadershipItem, 
@@ -50,7 +51,7 @@ export const educationList: EducationItem[] = [
     qualification: "BSS (Anthropology)",
     institution: "Shahjalal University of Science & Technology",
     boardUniversity: "SUST",
-    year: "2023",
+    year: "2025",
     result: "3.44 / 4.00"
   },
   {
@@ -68,6 +69,20 @@ export const educationList: EducationItem[] = [
     boardUniversity: "Sylhet Board",
     year: "2017",
     result: "5.00 / 5.00"
+  }
+];
+
+export const employmentExperience: EmploymentItem[] = [
+  {
+    id: "emp-1",
+    role: "Intern",
+    organisation: "Directorate General of Family Planning (DGFP) | District Family Planning Office, Sylhet",
+    period: "13 July 2026 – 12 September 2026",
+    bullets: [
+      "Conducted field visits to Upazila and Union-level Family Planning offices, satellite clinics and household sites within Sylhet district to observe service delivery and community-based outreach.",
+      "Compiled field observation reports and reviewed institutional documentation to analyze family planning service structures across district, upazila and union level.",
+      "Prepared and delivered a progress presentation on internship findings to senior government officials."
+    ]
   }
 ];
 
@@ -101,6 +116,7 @@ export const technicalSkills: SkillCategory[] = [
 
 export const certificatesList: CertificateItem[] = [
   { id: "cert-1", title: "AI and Career Empowerment", issuer: "University of Maryland, Smith School of Business", year: "2026", badgeColor: "bg-amber-100 text-amber-800", image: "/1.jpg" },
+  { id: "cert-18", title: "AI Workflows and Agents", issuer: "Grameenphone Academy", year: "2026", badgeColor: "bg-emerald-100 text-emerald-800" },
   { id: "cert-2", title: "Analyzing Data with Power BI", issuer: "Analytics Vidhya", year: "2026", badgeColor: "bg-blue-100 text-blue-800", image: "/2.jpg" },
   { id: "cert-3", title: "Cyber Hygiene Training", issuer: "The Asia Foundation & SAJIDA Foundation", year: "2026", badgeColor: "bg-emerald-100 text-emerald-800", image: "/3.jpg" },
   { id: "cert-4", title: "Design Power BI Reports", issuer: "Microsoft", year: "2026", badgeColor: "bg-blue-100 text-blue-800", image: "/4.jpg" },
@@ -120,6 +136,19 @@ export const certificatesList: CertificateItem[] = [
 ];
 
 export const researchExperience: ResearchExperienceItem[] = [
+  {
+    id: "exp-1",
+    role: "Research Assistant",
+    organisation: "Department of Anthropology, SUST | Government-Directed University Research",
+    project: "Conceptualizing \"Pedagogical Competence\" of Sexual & Reproductive Health (SRH): A qualitative exploration into the discursive barriers to SRH in the Bangladesh sexuality education curriculum.",
+    period: "March 2025 – March 2026",
+    bullets: [
+      "Conducted in-depth interviews and focus group discussions (FGDs) with study participants across field sites.",
+      "Built participant rapport and maintained ethical field observation practices throughout data collection.",
+      "Managed transcription of recorded interviews.",
+      "Contributed to manuscript drafting for academic publication."
+    ]
+  },
   {
     id: "exp-2",
     role: "Research Assistant",
@@ -251,7 +280,8 @@ export const memberships = [
   { organisation: "ASEAN Youth Organization", role: "Member", period: "May 2026 – Present" },
   { organisation: "Freire Institute", role: "Professional Member", period: "April 2026 – Present" },
   { organisation: "International Peace Bureau (IPB)", role: "Individual Member", period: "May 2026 – Present" },
-  { organisation: "Amnesty International", role: "International Member", period: "April 2026 – Present" }
+  { organisation: "Amnesty International", role: "International Member", period: "April 2026 – Present" },
+  { organisation: "Europa Nostra", role: "Youth Member", period: "June 2026 – Present" }
 ];
 
 export const languages = [
