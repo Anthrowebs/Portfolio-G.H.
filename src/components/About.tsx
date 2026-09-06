@@ -136,7 +136,7 @@ export default function About() {
                 <p className="text-xs text-white/50 font-sans mt-1">University (SUST)</p>
               </div>
               <div className="mt-4 pt-3 border-t border-white/5 flex justify-between items-center text-xs text-white/50 font-mono">
-                <span>YEAR: 2026 Expected</span>
+                <span>PASSING YEAR: 2026 Expected</span>
                 <span className="bg-brand-500/10 text-brand-500 px-2 py-0.5 rounded-sm border border-brand-500/20">Enrolled</span>
               </div>
             </div>
@@ -148,7 +148,7 @@ export default function About() {
                 <p className="text-xs text-white/50 font-sans mt-1">University (SUST)</p>
               </div>
               <div className="mt-4 pt-3 border-t border-white/5 flex justify-between items-center text-xs text-white/50 font-mono">
-                <span>YEAR: 2023</span>
+                <span>PASSING YEAR: 2025</span>
                 <span className="bg-emerald-500/10 text-brand-500 px-2 py-0.5 rounded-sm border border-emerald-500/20 font-semibold">3.44 / 4.00</span>
               </div>
             </div>
@@ -160,7 +160,7 @@ export default function About() {
                 <p className="text-xs text-white/50 font-sans mt-1">Sylhet Board</p>
               </div>
               <div className="mt-4 pt-3 border-t border-white/5 flex justify-between items-center text-xs text-white/50 font-mono">
-                <span>YEAR: 2019</span>
+                <span>PASSING YEAR: 2019</span>
                 <span className="bg-brand-500/10 text-brand-500 px-2 py-0.5 rounded-sm border border-brand-500/20 font-semibold">GPA: 5.00 / 5.00</span>
               </div>
             </div>
@@ -172,7 +172,7 @@ export default function About() {
                 <p className="text-xs text-white/50 font-sans mt-1">Sylhet Board</p>
               </div>
               <div className="mt-4 pt-3 border-t border-white/5 flex justify-between items-center text-xs text-white/50 font-mono">
-                <span>YEAR: 2017</span>
+                <span>PASSING YEAR: 2017</span>
                 <span className="bg-brand-500/10 text-brand-500 px-2 py-0.5 rounded-sm border border-brand-500/20 font-semibold">GPA: 5.00 / 5.00</span>
               </div>
             </div>
