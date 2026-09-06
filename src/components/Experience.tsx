@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { Briefcase, Milestone, Award, Users, Mail, Phone, Calendar, ArrowUpRight, BadgeCheck } from "lucide-react";
-import { employmentExperience, researchExperience, leadershipEngagement, conferencePresentations, references } from "../data/portfolioData";
+import { Briefcase, Milestone, Award, Calendar, ArrowUpRight, BadgeCheck } from "lucide-react";
+import { employmentExperience, researchExperience, leadershipEngagement, conferencePresentations } from "../data/portfolioData";
 
-type TabType = "internship" | "research" | "leadership" | "conferences" | "references";
+type TabType = "internship" | "research" | "leadership" | "conferences";
 
 export default function Experience() {
   const [activeTab, setActiveTab] = useState<TabType>("internship");
@@ -12,8 +12,7 @@ export default function Experience() {
     { id: "internship" as TabType, label: "Internship", icon: <BadgeCheck className="w-4 h-4" /> },
     { id: "research" as TabType, label: "Research Projects", icon: <Briefcase className="w-4 h-4" /> },
     { id: "leadership" as TabType, label: "Leadership & Engagement", icon: <Milestone className="w-4 h-4" /> },
-    { id: "conferences" as TabType, label: "Conference Presentations", icon: <Award className="w-4 h-4 text-amber-500" /> },
-    { id: "references" as TabType, label: "Academic References", icon: <Users className="w-4 h-4" /> }
+    { id: "conferences" as TabType, label: "Conference Presentations", icon: <Award className="w-4 h-4 text-amber-500" /> }
   ];
 
   return (
@@ -234,47 +233,6 @@ export default function Experience() {
                     <div className="mt-6 pt-3 border-t border-white/5 text-[10px] font-mono text-brand-500 font-semibold flex items-center gap-1 uppercase tracking-wider">
                       <span>Scientific Speaker Panel</span>
                       <ArrowUpRight className="w-3.5 h-3.5" />
-                    </div>
-                  </div>
-                ))}
-              </motion.div>
-            )}
-
-            {/* REFERENCES */}
-            {activeTab === "references" && (
-              <motion.div
-                key="references"
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -15 }}
-                transition={{ duration: 0.25 }}
-                className="grid grid-cols-1 md:grid-cols-2 gap-6"
-              >
-                {references.map((ref, idx) => (
-                  <div key={idx} className="border border-white/10 bg-white/5 shadow-xs rounded-sm p-6 relative hover:border-brand-500/40 transition-colors">
-                    <span className="absolute right-4 top-2 text-white/5 text-8xl font-serif font-bold pointer-events-none mb-1 select-none">
-                      ”
-                    </span>
-                    
-                    <h4 className="font-display font-bold text-lg text-white">
-                      {ref.name}
-                    </h4>
-                    <p className="text-xs font-mono text-brand-500 font-semibold uppercase tracking-widest mt-1">
-                      {ref.role}
-                    </p>
-                    <p className="text-xs font-sans text-white/50 mt-0.5">
-                      {ref.dept}, {ref.institution}
-                    </p>
-
-                    <div className="mt-6 space-y-2 border-t border-white/5 pt-4 text-xs font-mono text-white/70">
-                      <a href={`tel:${ref.phone}`} className="flex items-center gap-2 hover:text-brand-500 transition-colors w-fit">
-                        <Phone className="w-3.5 h-3.5 text-brand-500" />
-                        <span>{ref.phone}</span>
-                      </a>
-                      <a href={`mailto:${ref.email}`} className="flex items-center gap-2 hover:text-brand-500 transition-colors w-fit">
-                        <Mail className="w-3.5 h-3.5 text-brand-500" />
-                        <span>{ref.email}</span>
-                      </a>
                     </div>
                   </div>
                 ))}

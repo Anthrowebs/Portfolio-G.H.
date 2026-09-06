@@ -288,22 +288,3 @@ export const languages = [
   { name: "Bengali (Bangla)", level: "Native" },
   { name: "English", level: "Professional Proficiency | Reading: Advanced • Writing: Advanced • Speaking: Advanced" }
 ];
-
-export const references = [
-  {
-    name: "Dr. Md. Shahgahan Miah",
-    role: "Professor",
-    dept: "Department of Anthropology",
-    institution: "Shahjalal University of Science & Technology",
-    phone: "+880 1740-992656",
-    email: "shahgahan-anp@sust.edu"
-  },
-  {
-    name: "Chand Mia",
-    role: "Assistant Professor",
-    dept: "Department of Anthropology",
-    institution: "Shahjalal University of Science & Technology",
-    phone: "+880 1917-870702",
-    email: "chandm-anp@sust.edu"
-  }
-];
