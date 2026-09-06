@@ -116,7 +116,7 @@ export const technicalSkills: SkillCategory[] = [
 
 export const certificatesList: CertificateItem[] = [
   { id: "cert-1", title: "AI and Career Empowerment", issuer: "University of Maryland, Smith School of Business", year: "2026", badgeColor: "bg-amber-100 text-amber-800", image: "/1.jpg" },
-  { id: "cert-18", title: "AI Workflows and Agents", issuer: "Grameenphone Academy", year: "2026", badgeColor: "bg-emerald-100 text-emerald-800" },
+  { id: "cert-18", title: "AI Workflows and Agents", issuer: "Grameenphone Academy", year: "2026", badgeColor: "bg-emerald-100 text-emerald-800", image: "/18.jpg" },
   { id: "cert-2", title: "Analyzing Data with Power BI", issuer: "Analytics Vidhya", year: "2026", badgeColor: "bg-blue-100 text-blue-800", image: "/2.jpg" },
   { id: "cert-3", title: "Cyber Hygiene Training", issuer: "The Asia Foundation & SAJIDA Foundation", year: "2026", badgeColor: "bg-emerald-100 text-emerald-800", image: "/3.jpg" },
   { id: "cert-4", title: "Design Power BI Reports", issuer: "Microsoft", year: "2026", badgeColor: "bg-blue-100 text-blue-800", image: "/4.jpg" },
